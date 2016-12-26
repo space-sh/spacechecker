@@ -18,6 +18,10 @@
 # spacechecker - Space module analyzer
 #
 
+
+# Disable warning about indirectly checking status code
+# shellcheck disable=SC2181
+
 #=====================
 # SPACECHECKER_DEP_INSTALL
 #
@@ -36,6 +40,10 @@ SPACECHECKER_DEP_INSTALL ()
         return 1
     fi
 }
+
+
+# Disable warning about indirectly checking status code
+# shellcheck disable=SC2181
 
 #=====================
 # _CHECK_DEP_INSTALL_NODE
@@ -103,7 +111,8 @@ _CHECK_TESTS_EXIST()
 #=====================
 _CHECK_MODULE()
 {
-    SPACE_CMDDEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_TESTS_EXIST"
+    # shellcheck disable=SC2034
+    SPACE_CMDDEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_TESTS_EXIST" 
 
     if [ "$#" -eq 0 ]; then
         PRINT "missing module directory path to analyze" "error"
@@ -112,7 +121,7 @@ _CHECK_MODULE()
 
     local _dir_name="$1"
     # Append PWD if path is relative
-    if [[ ! "${_dir_name:0:1}" = "/" ]]; then
+    if [ ! "${_dir_name:0:1}" = "/" ]; then
         _dir_name="${PWD}/${_dir_name}"
     fi
 
