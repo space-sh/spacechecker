@@ -26,15 +26,14 @@ _dep_install:
     _info:
         title: Verify dependencies
     _env:
-        - CMD:
+        - CMD: SPACECHECKER_DEP_INSTALL
 
 run:
     _info:
         title: Run module analysis
         desc:|
             Takes a module directory path as input and perform analysis check on its contents.
-            Parameters:
-                1: module directory path to analyze
+            Example: space -m spacechecker /run/ -- .
     _env:
         - CMD: _CHECK_MODULE
 

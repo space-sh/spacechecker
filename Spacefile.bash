@@ -18,6 +18,31 @@
 # spacechecker - Space module analyzer
 #
 
+#=====================
+# SPACECHECKER_DEP_INSTALL
+#
+# Check dependencies for this module.
+#
+#=====================
+SPACECHECKER_DEP_INSTALL ()
+{
+    SPACE_CMDDEP="OS_IS_INSTALLED PRINT"    # shellcheck disable=SC2034
+    PRINT "Checking for OS dependencies." "info"
+
+    if [ "$?" -eq 0 ]; then
+        PRINT "Dependencies found." "success"
+    else
+        PRINT "Failed finding dependencies." "error"
+        return 1
+    fi
+}
+
+#=====================
+# _CHECK_DEP_INSTALL_NODE
+#
+# Check if module has dep_install node implemented.
+#
+#=====================
 _CHECK_DEP_INSTALL_NODE()
 {
     space -f "$_dir_name/Spacefile.yaml" /_dep_install/ -h > /dev/null 2>&1
@@ -28,6 +53,12 @@ _CHECK_DEP_INSTALL_NODE()
     fi
 }
 
+#=====================
+# _CHECK_LICENSE_FILE_EXISTS
+#
+# Check if module has LICENSE file present.
+#
+#=====================
 _CHECK_LICENSE_FILE_EXISTS()
 {
     if [ -f "$_dir_name/LICENSE" ]; then
@@ -37,6 +68,12 @@ _CHECK_LICENSE_FILE_EXISTS()
     fi
 }
 
+#=====================
+# _CHECK_TESTS_EXIST
+#
+# Check if module has tests structure in place.
+#
+#=====================
 _CHECK_TESTS_EXIST()
 {
     if [ -d "$_dir_name/test" ]; then
@@ -51,6 +88,19 @@ _CHECK_TESTS_EXIST()
     fi
 }
 
+#=====================
+# _CHECK_MODULE
+#
+# Check if module complies with Space module guidelines.
+#
+# Parameters:
+#   $1: module directory path
+#
+# Returns:
+#   0: success
+#   1: failed. Directory path is not pointing to a module.
+#
+#=====================
 _CHECK_MODULE()
 {
     SPACE_CMDDEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_TESTS_EXIST"
