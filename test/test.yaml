@@ -1,0 +1,39 @@
+#
+# Copyright 2016 Blockie AB
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+_info:
+    title: Test suite for the Spacechecker module.
+    desc:|
+        Note: this test suite is stateless and does not leverage testrunner.
+              These tests are harmless and should stay that way.
+              The interface is the same as testrunner-enabled tests, for convenience.
+_tests:
+    -
+        -
+            @include: @{DIR}/../Spacefile.yaml|/_dep_install
+        -
+            _info:
+                title: Check that run works
+            _env:
+                - CMD: _CHECK_MODULE -- "."
+
+_clean:
+    _info:
+        title: Do nothing.
+    _env:
+        - CMDWRAP: !unset
+        - CMD: ":"
+
