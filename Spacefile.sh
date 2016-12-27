@@ -18,6 +18,7 @@
 # spacechecker - Space module analyzer
 #
 
+clone os
 
 # Disable warning about indirectly checking status code
 # shellcheck disable=SC2181
