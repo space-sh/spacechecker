@@ -121,7 +121,7 @@ _CHECK_MODULE()
 
     local _dir_name="$1"
     # Append PWD if path is relative
-    if [ ! "${_dir_name:0:1}" = "/" ]; then
+    if [ ! "${_dir_name}" = "${_dir_name#/}" ]; then
         _dir_name="${PWD}/${_dir_name}"
     fi
 
