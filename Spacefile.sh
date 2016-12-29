@@ -97,6 +97,40 @@ _CHECK_TESTS_EXIST()
     fi
 }
 
+
+# Disable warning about indirectly checking status code
+# shellcheck disable=SC2181
+
+#=====================
+# _CHECK_BASHISMS
+#
+# Check if module possibly has bashisms
+#
+#=====================
+_CHECK_BASHISMS()
+{
+    local _script_file=
+    if [ -f "Spacefile.sh" ]; then
+        _script_file="Spacefile.sh"
+    elif [ -f "Spacefile.bash" ]; then
+        _script_file="Spacefile.bassh"
+    fi
+
+    if command -v "checkbashisms" >/dev/null; then
+        checkbashisms -f "$_script_file" >/dev/null 2>&1
+        if [ "$?" -ne 0 ]; then
+            PRINT "Possible bashisms found in $_script_file with checkbashisms" "warning"
+        fi
+    fi
+
+    if command -v "shellcheck" >/dev/null; then
+        shellcheck  --exclude=2148 "$_script_file" >/dev/null 2>&1
+        if [ "$?" -ne 0 ]; then
+            PRINT "Possible bashisms found in $_script_file with shellcheck" "warning"
+        fi
+    fi
+}
+
 #=====================
 # _CHECK_MODULE
 #
@@ -113,7 +147,7 @@ _CHECK_TESTS_EXIST()
 _CHECK_MODULE()
 {
     # shellcheck disable=SC2034
-    SPACE_CMDDEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_TESTS_EXIST" 
+    SPACE_CMDDEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_BASHISMS"
 
     if [ "$#" -eq 0 ]; then
         PRINT "missing module directory path to analyze" "error"
@@ -134,6 +168,7 @@ _CHECK_MODULE()
             _CHECK_DEP_INSTALL_NODE
             _CHECK_LICENSE_FILE_EXISTS
             _CHECK_TESTS_EXIST
+            _CHECK_BASHISMS
         else
             PRINT "expected Spacefile.sh|bash in directory: $_dir_name" "error"
             exit 1
