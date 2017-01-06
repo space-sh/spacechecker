@@ -78,6 +78,21 @@ _CHECK_LICENSE_FILE_EXISTS()
 }
 
 #=====================
+# _CHECK_CHANGELOG_FILE_EXISTS
+#
+# Check if module has CHANGELOG file present.
+#
+#=====================
+_CHECK_CHANGELOG_FILE_EXISTS()
+{
+    if [ -f "$_dir_name/CHANGELOG.md" ]; then
+        PRINT "OK" "success"
+    else
+        PRINT "expected CHANGELOG.md file" "warning"
+    fi
+}
+
+#=====================
 # _CHECK_TESTS_EXIST
 #
 # Check if module has tests structure in place.
@@ -147,7 +162,7 @@ _CHECK_BASHISMS()
 _CHECK_MODULE()
 {
     # shellcheck disable=SC2034
-    SPACE_CMDDEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_BASHISMS"
+    SPACE_CMDDEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_BASHISMS"
 
     if [ "$#" -eq 0 ]; then
         PRINT "missing module directory path to analyze" "error"
@@ -167,6 +182,7 @@ _CHECK_MODULE()
             PRINT "OK" "success"
             _CHECK_DEP_INSTALL_NODE
             _CHECK_LICENSE_FILE_EXISTS
+            _CHECK_CHANGELOG_FILE_EXISTS
             _CHECK_TESTS_EXIST
             _CHECK_BASHISMS
         else
