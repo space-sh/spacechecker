@@ -35,7 +35,7 @@ SPACECHECKER_DEP_INSTALL ()
     PRINT "Checking for OS dependencies." "info"
 
     if [ "$?" -eq 0 ]; then
-        PRINT "Dependencies found." "success"
+        PRINT "Dependencies found." "ok"
     else
         PRINT "Failed finding dependencies." "error"
         return 1
@@ -58,7 +58,7 @@ _CHECK_DEP_INSTALL_NODE()
     if [ "$?" -ne 0 ]; then
         PRINT "expected _dep_install node in Spacefile.yaml" "warning"
     else
-        PRINT "OK" "success"
+        PRINT "OK" "ok"
     fi
 }
 
@@ -71,7 +71,7 @@ _CHECK_DEP_INSTALL_NODE()
 _CHECK_LICENSE_FILE_EXISTS()
 {
     if [ -f "$_dir_name/LICENSE" ]; then
-        PRINT "OK" "success"
+        PRINT "OK" "ok"
     else
         PRINT "expected LICENSE file" "warning"
     fi
@@ -86,7 +86,7 @@ _CHECK_LICENSE_FILE_EXISTS()
 _CHECK_CHANGELOG_FILE_EXISTS()
 {
     if [ -f "$_dir_name/CHANGELOG.md" ]; then
-        PRINT "OK" "success"
+        PRINT "OK" "ok"
     else
         PRINT "expected CHANGELOG.md file" "warning"
     fi
@@ -101,7 +101,7 @@ _CHECK_CHANGELOG_FILE_EXISTS()
 _CHECK_STABLE_FILE_EXISTS()
 {
     if [ -f "$_dir_name/stable.txt" ]; then
-        PRINT "OK" "success"
+        PRINT "OK" "ok"
     else
         PRINT "expected stable.txt file" "warning"
     fi
@@ -118,7 +118,7 @@ _CHECK_TESTS_EXIST()
     if [ -d "$_dir_name/test" ]; then
         if [ -f "$_dir_name/test/test.yaml" ] \
             && [ -f "$_dir_name/test/test.sh" ]; then
-            PRINT "OK" "success"
+            PRINT "OK" "ok"
         else
             PRINT "expected test.yaml,sh in the test directory " "warning"
         fi
@@ -194,7 +194,7 @@ _CHECK_MODULE()
     if [ -f "$_dir_name/Spacefile.yaml" ]; then
         if [ -f "$_dir_name/Spacefile.sh" ] \
            || [ -f "$_dir_name/Spacefile.bash" ]; then
-            PRINT "OK" "success"
+            PRINT "OK" "ok"
             _CHECK_DEP_INSTALL_NODE
             _CHECK_LICENSE_FILE_EXISTS
             _CHECK_CHANGELOG_FILE_EXISTS
