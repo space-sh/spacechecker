@@ -36,11 +36,35 @@ Check if module has LICENSE file present.
   
   
   
+## \_CHECK\_CHANGELOG\_FILE\_EXISTS()  
+  
+  
+  
+Check if module has CHANGELOG file present.  
+  
+  
+  
+## \_CHECK\_STABLE\_FILE\_EXISTS()  
+  
+  
+  
+Check if module has stable file present.  
+  
+  
+  
 ## \_CHECK\_TESTS\_EXIST()  
   
   
   
 Check if module has tests structure in place.  
+  
+  
+  
+## \_CHECK\_BASHISMS()  
+  
+  
+  
+Check if module possibly has bashisms  
   
   
   
