@@ -18,8 +18,6 @@
 # spacechecker - Space module analyzer
 #
 
-clone os
-
 # Disable warning about indirectly checking status code
 # shellcheck disable=SC2181
 
@@ -31,8 +29,8 @@ clone os
 #=====================
 SPACECHECKER_DEP_INSTALL ()
 {
-    SPACE_CMDDEP="OS_IS_INSTALLED PRINT"    # shellcheck disable=SC2034
-    PRINT "Checking for OS dependencies." "info"
+    SPACE_DEP="PRINT"    # shellcheck disable=SC2034
+    PRINT "Checking for dependencies." "info"
 
     if [ "$?" -eq 0 ]; then
         PRINT "Dependencies found." "ok"
@@ -177,7 +175,7 @@ _CHECK_BASHISMS()
 _CHECK_MODULE()
 {
     # shellcheck disable=SC2034
-    SPACE_CMDDEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_STABLE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_BASHISMS"
+    SPACE_DEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_STABLE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_BASHISMS"
 
     if [ "$#" -eq 0 ]; then
         PRINT "missing module directory path to analyze" "error"
