@@ -59,7 +59,7 @@ debianjessie_curl_test_module:
   image: debian:jessie
   script:
     - apt-get update -qq && apt-get install -y -qq curl
-    - curl -O https://gitlab.com/space-sh/space/repository/archive.tar.gz?ref=master && mkdir -p /space && tar xzvf "archive.tar.gz?ref=master" -C /space --strip-components=1 && cd /space && ./space /install/ && cd ..
+    - curl -O https://gitlab.com/space-sh/space/repository/archive.tar.gz?ref=master && mkdir -p ./space_install && tar xzvf "archive.tar.gz?ref=master" -C ./space_install --strip-components=1 && cd ./space_install && ./space /install/ && cd ..
     - mkdir ~/.ssh
     - printf "Host *\n StrictHostKeyChecking no" > ~/.ssh/config
     - which bash
@@ -72,7 +72,7 @@ debianjessie_wget_test_module:
   image: debian:jessie
   script:
     - apt-get update -qq && apt-get install -y -qq wget
-    - wget https://gitlab.com/space-sh/space/repository/archive.tar.gz?ref=master && mkdir -p /space && tar xzvf "archive.tar.gz?ref=master" -C /space --strip-components=1 && cd /space && ./space /install/ && cd ..
+    - wget https://gitlab.com/space-sh/space/repository/archive.tar.gz?ref=master && mkdir -p ./space_install && tar xzvf "archive.tar.gz?ref=master" -C ./space_install --strip-components=1 && cd ./space_install && ./space /install/ && cd ..
     - mkdir ~/.ssh
     - printf "Host *\n StrictHostKeyChecking no" > ~/.ssh/config
     - which bash
