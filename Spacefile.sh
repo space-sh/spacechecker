@@ -141,7 +141,7 @@ _CHECK_BASHISMS()
     if [ -f "Spacefile.sh" ]; then
         _script_file="Spacefile.sh"
     elif [ -f "Spacefile.bash" ]; then
-        _script_file="Spacefile.bassh"
+        _script_file="Spacefile.bash"
     fi
 
     if command -v "checkbashisms" >/dev/null; then
