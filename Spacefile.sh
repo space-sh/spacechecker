@@ -140,6 +140,21 @@ _CHECK_TESTS_EXIST()
     fi
 }
 
+#=====================
+# _CHECK_GITLABCI_FILE_EXISTS
+#
+# Check if module has gitlab-ci file present.
+#
+#=====================
+_CHECK_GITLABCI_FILE_EXISTS()
+{
+    if [ -f "$_dir_name/.gitlab-ci.yml" ]; then
+        PRINT "OK" "ok"
+    else
+        PRINT "expected .gitlab-ci.yml file" "warning"
+    fi
+}
+
 
 # Disable warning about indirectly checking status code
 # shellcheck disable=SC2181
@@ -190,7 +205,7 @@ _CHECK_BASHISMS()
 _CHECK_MODULE()
 {
     # shellcheck disable=SC2034
-    SPACE_DEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_README_FILE_EXISTS _CHECK_STABLE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_BASHISMS"
+    SPACE_DEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_README_FILE_EXISTS _CHECK_STABLE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_GITLABCI_FILE_EXISTS _CHECK_BASHISMS"
 
     if [ "$#" -eq 0 ]; then
         PRINT "missing module directory path to analyze" "error"
@@ -214,6 +229,7 @@ _CHECK_MODULE()
             _CHECK_README_FILE_EXISTS
             _CHECK_STABLE_FILE_EXISTS
             _CHECK_TESTS_EXIST
+            _CHECK_GITLABCI_FILE_EXISTS
             _CHECK_BASHISMS
         else
             PRINT "expected Spacefile.sh|bash in directory: $_dir_name" "error"
