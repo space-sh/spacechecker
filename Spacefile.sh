@@ -91,6 +91,21 @@ _CHECK_CHANGELOG_FILE_EXISTS()
 }
 
 #=====================
+# _CHECK_README_FILE_EXISTS
+#
+# Check if module has README file present.
+#
+#=====================
+_CHECK_README_FILE_EXISTS()
+{
+    if [ -f "$_dir_name/README.md" ]; then
+        PRINT "OK" "ok"
+    else
+        PRINT "expected README.md file" "warning"
+    fi
+}
+
+#=====================
 # _CHECK_STABLE_FILE_EXISTS
 #
 # Check if module has stable file present.
@@ -175,7 +190,7 @@ _CHECK_BASHISMS()
 _CHECK_MODULE()
 {
     # shellcheck disable=SC2034
-    SPACE_DEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_STABLE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_BASHISMS"
+    SPACE_DEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_README_FILE_EXISTS _CHECK_STABLE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_BASHISMS"
 
     if [ "$#" -eq 0 ]; then
         PRINT "missing module directory path to analyze" "error"
@@ -196,6 +211,7 @@ _CHECK_MODULE()
             _CHECK_DEP_INSTALL_NODE
             _CHECK_LICENSE_FILE_EXISTS
             _CHECK_CHANGELOG_FILE_EXISTS
+            _CHECK_README_FILE_EXISTS
             _CHECK_STABLE_FILE_EXISTS
             _CHECK_TESTS_EXIST
             _CHECK_BASHISMS
