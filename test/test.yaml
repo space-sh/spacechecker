@@ -28,12 +28,11 @@ _tests:
             _info:
                 title: Check that run works
             _env:
-                - CMD: _CHECK_MODULE -- "."
+                - RUN: _CHECK_MODULE -- "."
 
 _clean:
     _info:
         title: Do nothing.
     _env:
-        - CMDWRAP: !unset
-        - CMD: ":"
-
+        - SPACE_WRAP: !unset
+        - RUN: ":"
