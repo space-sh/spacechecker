@@ -27,7 +27,7 @@
 # Check dependencies for this module.
 #
 #=====================
-SPACECHECKER_DEP_INSTALL ()
+SPACECHECKER_DEP_INSTALL()
 {
     SPACE_DEP="PRINT"    # shellcheck disable=SC2034
     PRINT "Checking for dependencies." "info"
