@@ -156,6 +156,8 @@ _CHECK_GITLABCI_FILE_EXISTS()
 }
 
 
+# Disable warning about local keyword usage
+# shellcheck disable=SC2039
 # Disable warning about indirectly checking status code
 # shellcheck disable=SC2181
 
@@ -212,6 +214,7 @@ _CHECK_MODULE()
         return 1
     fi
 
+    # shellcheck disable=SC2039
     local _dir_name="$1"
     # Append PWD if path is relative
     if [ ! "${_dir_name}" = "${_dir_name#/}" ]; then
