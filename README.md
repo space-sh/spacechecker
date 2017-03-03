@@ -3,16 +3,18 @@
 Performs analysis of other modules, looking for a set of properties and testing for conformance with _Space_ guidelines.
 
 
+
 ## /run/
 	Run module analysis
 
 	Takes a module directory path as input and perform analysis check on its contents.
 	Example: space -m spacechecker /run/ -- .
+	
 
 
 # Functions 
 
-## SPACECHECKER\_DEP\_INSTALL ()  
+## SPACECHECKER\_DEP\_INSTALL()  
   
   
   
@@ -44,6 +46,14 @@ Check if module has CHANGELOG file present.
   
   
   
+## \_CHECK\_README\_FILE\_EXISTS()  
+  
+  
+  
+Check if module has README file present.  
+  
+  
+  
 ## \_CHECK\_STABLE\_FILE\_EXISTS()  
   
   
@@ -57,6 +67,14 @@ Check if module has stable file present.
   
   
 Check if module has tests structure in place.  
+  
+  
+  
+## \_CHECK\_GITLABCI\_FILE\_EXISTS()  
+  
+  
+  
+Check if module has gitlab-ci file present.  
   
   
   
