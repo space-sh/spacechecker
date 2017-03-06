@@ -184,22 +184,29 @@ _CHECK_GITLABCI_FILE_EXISTS()
 #=====================
 _CHECK_BASHISMS()
 {
+    local _script_file_ext=
     local _script_file=
+
     if [ -f "Spacefile.sh" ]; then
         _script_file="Spacefile.sh"
     elif [ -f "Spacefile.bash" ]; then
         _script_file="Spacefile.bash"
     fi
+    _script_file_ext="${_script_file##*.}"
 
-    if command -v "checkbashisms" >/dev/null; then
-        checkbashisms -f "$_script_file" >/dev/null 2>&1
-        if [ "$?" -ne 0 ]; then
-            PRINT "Possible bashisms found in $_script_file with checkbashisms" "warning"
+    # checkbashisms
+    if [ "${_script_file_ext}" = "sh" ]; then
+        if command -v "checkbashisms" >/dev/null; then
+            checkbashisms -f "$_script_file" >/dev/null 2>&1
+            if [ "$?" -ne 0 ]; then
+                PRINT "Possible bashisms found in $_script_file with checkbashisms" "warning"
+            fi
         fi
     fi
 
+    # run shellcheck
     if command -v "shellcheck" >/dev/null; then
-        shellcheck  --exclude=2148 "$_script_file" >/dev/null 2>&1
+        shellcheck  --exclude=2148 --shell=${_script_file_ext} "$_script_file" >/dev/null 2>&1
         if [ "$?" -ne 0 ]; then
             PRINT "Possible bashisms found in $_script_file with shellcheck" "warning"
         fi
