@@ -54,6 +54,14 @@ Check if module has README file present.
   
   
   
+## \_CHECK\_UPDATE\_README\_FILE\_EXISTS()  
+  
+  
+  
+Check if module has update\_readme script present.  
+  
+  
+  
 ## \_CHECK\_STABLE\_FILE\_EXISTS()  
   
   
