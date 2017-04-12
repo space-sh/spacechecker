@@ -136,6 +136,21 @@ _CHECK_STABLE_FILE_EXISTS()
 }
 
 #=====================
+# _CHECK_REQUIREMENT_FILE_EXISTS
+#
+# Check if module has requirement file present.
+#
+#=====================
+_CHECK_REQUIREMENT_FILE_EXISTS()
+{
+    if [ -f "$_dir_name/space-requirement.txt" ]; then
+        PRINT "OK" "ok"
+    else
+        PRINT "expected space-requirement.txt file" "warning"
+    fi
+}
+
+#=====================
 # _CHECK_TESTS_EXIST
 #
 # Check if module has tests structure in place.
@@ -152,6 +167,25 @@ _CHECK_TESTS_EXIST()
         fi
     else
         PRINT "expected test directory" "warning"
+    fi
+}
+
+#=====================
+# _CHECK_DOC_EXIST
+#
+# Check if module has doc structure in place.
+#
+#=====================
+_CHECK_DOC_EXIST()
+{
+    if [ -d "$_dir_name/doc" ]; then
+        if [ -f "$_dir_name/doc/index.md" ]; then
+            PRINT "OK" "ok"
+        else
+            PRINT "expected index.md in the doc directory " "warning"
+        fi
+    else
+        PRINT "expected doc directory" "warning"
     fi
 }
 
@@ -229,7 +263,7 @@ _CHECK_BASHISMS()
 _CHECK_MODULE()
 {
     # shellcheck disable=SC2034
-    SPACE_DEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_README_FILE_EXISTS _CHECK_UPDATE_README_FILE_EXISTS _CHECK_STABLE_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_GITLABCI_FILE_EXISTS _CHECK_BASHISMS"
+    SPACE_DEP="PRINT _CHECK_DEP_INSTALL_NODE _CHECK_LICENSE_FILE_EXISTS _CHECK_CHANGELOG_FILE_EXISTS _CHECK_README_FILE_EXISTS _CHECK_UPDATE_README_FILE_EXISTS _CHECK_STABLE_FILE_EXISTS _CHECK_REQUIREMENT_FILE_EXISTS _CHECK_TESTS_EXIST _CHECK_DOC_EXIST _CHECK_GITLABCI_FILE_EXISTS _CHECK_BASHISMS"
 
     if [ "$#" -eq 0 ]; then
         PRINT "missing module directory path to analyze" "error"
@@ -254,7 +288,9 @@ _CHECK_MODULE()
             _CHECK_README_FILE_EXISTS
             _CHECK_UPDATE_README_FILE_EXISTS
             _CHECK_STABLE_FILE_EXISTS
+            _CHECK_REQUIREMENT_FILE_EXISTS
             _CHECK_TESTS_EXIST
+            _CHECK_DOC_EXIST
             _CHECK_GITLABCI_FILE_EXISTS
             _CHECK_BASHISMS
         else
