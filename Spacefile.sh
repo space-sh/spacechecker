@@ -128,10 +128,10 @@ _CHECK_UPDATE_README_FILE_EXISTS()
 #=====================
 _CHECK_STABLE_FILE_EXISTS()
 {
-    if [ -f "$_dir_name/stable.txt" ]; then
+    if [ -f "$_dir_name/space-module.txt" ]; then
         PRINT "OK" "ok"
     else
-        PRINT "expected stable.txt file" "warning"
+        PRINT "expected space-module.txt file" "warning"
     fi
 }
 
