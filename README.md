@@ -70,11 +70,27 @@ Check if module has stable file present.
   
   
   
+## \_CHECK\_REQUIREMENT\_FILE\_EXISTS()  
+  
+  
+  
+Check if module has requirement file present.  
+  
+  
+  
 ## \_CHECK\_TESTS\_EXIST()  
   
   
   
 Check if module has tests structure in place.  
+  
+  
+  
+## \_CHECK\_DOC\_EXIST()  
+  
+  
+  
+Check if module has doc structure in place.  
   
   
   
