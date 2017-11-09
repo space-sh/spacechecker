@@ -1,6 +1,18 @@
 # Space Module change log - spacechecker
 
-## [current]
+## [1.2.9 - 2017-04-12]
+
++ Add `/doc` directory
+
++ Add requirement file check
+
++ Add doc directory check
+
+* Rename `stable` version file to match latest Space
+
+* Update `stable` version file to latest specifications
+
+* Update `requirements` file to latest specifications
 
 
 ## [1.2.7 - 2017-03-16]
