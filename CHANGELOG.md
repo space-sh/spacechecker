@@ -1,5 +1,10 @@
 # Space Module change log - spacechecker
 
+## [1.2.10 - 2017-11-10]
+
+* Updated latest stable version to support new Space major version
+
+
 ## [1.2.9 - 2017-04-12]
 
 + Add `/doc` directory
