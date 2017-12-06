@@ -68,7 +68,7 @@ _CHECK_DEP_INSTALL_NODE()
 #=====================
 _CHECK_LICENSE_FILE_EXISTS()
 {
-    if [ -f "$_dir_name/LICENSE" ]; then
+    if [ -f "$_dir_name/LICENSE" ] || [ -f "$_dir_name"/COPYING ]; then
         PRINT "OK" "ok"
     else
         PRINT "expected LICENSE file" "warning"
