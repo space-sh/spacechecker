@@ -1,5 +1,10 @@
 # Space Module change log - spacechecker
 
+## [1.2.11 - 2017-12-06]
+
+* Update license check to consider GPL file convention
+
+
 ## [1.2.10 - 2017-11-10]
 
 * Updated latest stable version to support new Space major version
