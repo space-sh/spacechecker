@@ -1,4 +1,4 @@
-# Spacechecker: module analysis | [![build status](https://gitlab.com/space-sh/spacechecker/badges/master/build.svg)](https://gitlab.com/space-sh/spacechecker/commits/master)
+# Spacechecker: module analysis | [![build status](https://gitlab.com/space-sh/spacechecker/badges/master/pipeline.svg)](https://gitlab.com/space-sh/spacechecker/commits/master)
 
 Performs analysis of other modules, looking for a set of properties and testing for conformance with _Space_ guidelines.
 
